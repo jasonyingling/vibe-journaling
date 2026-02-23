@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Warm paper-like palette */
+    --background: 40 30% 97%;
+    --foreground: 30 10% 15%;
+    --card: 40 25% 95%;
+    --card-foreground: 30 10% 15%;
+    --primary: 25 40% 42%;
+    --primary-foreground: 40 30% 97%;
+    --secondary: 35 20% 90%;
+    --secondary-foreground: 30 10% 25%;
+    --muted: 35 15% 92%;
+    --muted-foreground: 30 8% 50%;
+    --accent: 35 20% 90%;
+    --accent-foreground: 30 10% 25%;
+    --destructive: 0 60% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 30 15% 85%;
+    --input: 30 15% 85%;
+    --ring: 25 40% 42%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Auto-expanding textarea transition */
+textarea {
+  transition: height 0.1s ease-out;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Remove focus outlines for mouse users */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Custom scrollbar styling */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(30 15% 85%);
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(30 10% 70%);
+}
