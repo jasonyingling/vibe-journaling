@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface PromptDisplayProps {
   onPromptLoaded?: (text: string) => void;
@@ -8,6 +8,8 @@ interface PromptDisplayProps {
 
 export function PromptDisplay({ onPromptLoaded }: PromptDisplayProps) {
   const [prompt, setPrompt] = useState<string | null>(null);
+  const onPromptLoadedRef = useRef(onPromptLoaded);
+  onPromptLoadedRef.current = onPromptLoaded;
 
   useEffect(() => {
     fetch("/api/prompts/today")
@@ -15,14 +17,14 @@ export function PromptDisplay({ onPromptLoaded }: PromptDisplayProps) {
       .then((data) => {
         if (data?.text) {
           setPrompt(data.text);
-          onPromptLoaded?.(data.text);
+          onPromptLoadedRef.current?.(data.text);
         }
       })
       .catch(() => {
         setPrompt("What's on your mind?");
-        onPromptLoaded?.("What's on your mind?");
+        onPromptLoadedRef.current?.("What's on your mind?");
       });
-  }, [onPromptLoaded]);
+  }, []);
 
   if (!prompt) return null;
 
