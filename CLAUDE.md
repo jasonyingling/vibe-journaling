@@ -17,7 +17,7 @@ There are no tests configured in this project.
 
 ## Architecture
 
-**Stack:** Next.js 14 (App Router) + SQLite (via better-sqlite3) + Drizzle ORM + Tailwind CSS + shadcn/ui patterns.
+**Stack:** Next.js 16 (App Router) + SQLite (via better-sqlite3) + Drizzle ORM + Tailwind CSS + shadcn/ui patterns.
 
 **Database:** SQLite file at `./data/vibe-journal.db`. The schema is defined in `src/db/schema.ts` and tables are auto-created on startup in `src/db/index.ts` (no migration step needed for local dev). Drizzle migrations output to `./drizzle/`. `better-sqlite3` must be listed in `serverExternalPackages` in `next.config.js` to work with Next.js.
 
